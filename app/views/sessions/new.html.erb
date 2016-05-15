@@ -1,0 +1,9 @@
+<% if !!session["user_id"] %>
+  <h1>You are already signed in, <%= current_user.user_name %>.</h1>
+<% else %>
+<h1>Sign In</h1>
+  <%= render 'form' %>
+<% end %>
+<!-- this whole thing would be better if never actually nav'd to but
+rendered a la the authorize method -->
+<%= link_to 'Back', root_path %>

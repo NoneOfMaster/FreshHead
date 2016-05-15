@@ -1,0 +1,13 @@
+<%= form_for(@user, url: sessions_path) do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :return_url, :value => @return_url %><br>
+    <%= f.label :email, "email" %><br>
+    <%= f.text_field :email %><br>
+    <%= f.label :password, "password" %><br>
+    <%= f.password_field :password %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit "Log In" %>
+  </div>
+<% end %>
