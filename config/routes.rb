@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'days#index'
+  root 'days#show'
 
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'

@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
       notice = "Welcome back, #{@user.user_name}."
-      ## got to add that session_params[:return_url] == "/signup" or something, also goes to root_path
       session_params[:return_url].empty? ? session[:return_to] = request.referer : session[:return_to] = session_params[:return_url]
       redirect_to session.delete(:return_to), :notice => notice
     else
