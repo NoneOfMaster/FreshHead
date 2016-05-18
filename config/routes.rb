@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy'
 
   resources :sessions, only: [:create, :destroy, :new]
-  resources :batches, only: [:index, :show]
-  resources :quotes, only: :index
+  resources :batches, :quotes, :facts, :poems, only: [:index, :show]
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
