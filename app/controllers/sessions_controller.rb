@@ -10,8 +10,11 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
       notice = "Welcome back, #{@user.user_name}."
-      session_params[:return_url].empty? ? session[:return_to] = request.referer : session[:return_to] = session_params[:return_url]
-      redirect_to session.delete(:return_to), :notice => notice
+      # refactor below to account referer is the signup page, or is offsite
+      # session_params[:return_url].empty? ? session[:return_to] = request.referer : session[:return_to] = session_params[:return_url]
+      # redirect_to session.delete(:return_to), :notice => notice
+      # meantime:
+      redirect_to root_path, :notice => notice
     else
       notice = "Username or password not found."
       redirect_to request.referer, :notice => notice

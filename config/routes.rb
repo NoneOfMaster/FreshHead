@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'days#show'
+  root 'batches#show'
 
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   get 'signout', to: 'sessions#destroy'
 
   resources :sessions, only: [:create, :destroy, :new]
-  resources :days, only: [:index, :show]
+  resources :batches, only: [:index, :show]
   resources :quotes, only: :index
   resources :users
 
