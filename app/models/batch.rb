@@ -1,8 +1,8 @@
 class Batch < ActiveRecord::Base
 
-  has_one :quote 
-  has_one :fact
-  has_one :poem
+  has_one :quote, dependent: :destroy
+  has_one :fact, dependent: :destroy
+  has_one :poem, dependent: :destroy
 
   before_save :set_batch_data
 
@@ -21,6 +21,7 @@ class Batch < ActiveRecord::Base
     puts "Poem: #{self.poem.title}"
     puts "by #{self.poem.poet}"
     puts "#{self.poem.poem}"
+    true
   end  
 
 end
