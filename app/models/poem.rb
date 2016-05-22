@@ -6,10 +6,7 @@ class Poem < ActiveRecord::Base
   belongs_to :batch
 
   before_save do |p|
-    # to make sure this poem isn't already in the db - be sure to test
-    while self.poem == nil || Poem.where(:poem => self.poem).count > 0 
-      p.get_from_poetry_db
-    end
+    p.get_from_poetry_db
   end
 
   def get_from_poetry_db
@@ -21,16 +18,20 @@ class Poem < ActiveRecord::Base
     rescue
       get_from_poems_dot_com
     else
-      puts "from Poetrydb.org"
       single_poem_obj = @full_poems_obj.sample
-      self.title = single_poem_obj["title"]
-      self.poet = single_poem_obj["author"]
-      self.poem = single_poem_obj["lines"].join("<br>")
+      if Poem.where("title = ?", single_poem_obj['title']).count > 0
+        get_from_poetry_db
+      else
+        puts "Poem from Poetrydb.org" #why does this get output twice during rake set_batch_data?
+        self.title = single_poem_obj["title"]
+        self.poet = single_poem_obj["author"]
+        self.poem = single_poem_obj["lines"].join("<br>")
+      end
     end
   end
 
   def get_from_poems_dot_com
-    puts "from Poems.com"
+    puts "Poem from Poems.com"
     html = open("http://poems.com/today.php")
     poem_obj = Nokogiri::HTML(html)
     self.title = poem_obj.css("#page_title").text

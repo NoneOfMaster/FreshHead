@@ -1,6 +1,6 @@
 $(document).on('page:load', function() {
 
-    console.log( "ready!" );
+    console.log( "ready! user_show" );
     setListeners();
     preventAdminDeletion();
 

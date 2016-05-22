@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518193837) do
+ActiveRecord::Schema.define(version: 20160521223503) do
 
   create_table "batches", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160518193837) do
   end
 
   add_index "facts", ["batch_id"], name: "index_facts_on_batch_id"
+
+  create_table "news", force: :cascade do |t|
+    t.text     "title"
+    t.text     "abstract"
+    t.text     "url"
+    t.integer  "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "news", ["batch_id"], name: "index_news_on_batch_id"
 
   create_table "poems", force: :cascade do |t|
     t.text    "title"
