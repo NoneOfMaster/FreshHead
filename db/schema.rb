@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521223503) do
+ActiveRecord::Schema.define(version: 20160523040921) do
 
   create_table "batches", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 20160521223503) do
   end
 
   add_index "quotes", ["batch_id"], name: "index_quotes_on_batch_id"
+
+  create_table "user_batches", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_batches", ["batch_id"], name: "index_user_batches_on_batch_id"
+  add_index "user_batches", ["user_id"], name: "index_user_batches_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.text     "user_name"

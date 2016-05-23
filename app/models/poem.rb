@@ -5,7 +5,7 @@ class Poem < ActiveRecord::Base
 
   belongs_to :batch
 
-  before_save do |p|
+  after_create do |p|
     p.get_from_poetry_db
   end
 
@@ -22,7 +22,7 @@ class Poem < ActiveRecord::Base
       if Poem.where("title = ?", single_poem_obj['title']).count > 0
         get_from_poetry_db
       else
-        puts "Poem from Poetrydb.org" #why does this get output twice during rake set_batch_data?
+        puts "Poem from Poetrydb.org"
         self.title = single_poem_obj["title"]
         self.poet = single_poem_obj["author"]
         self.poem = single_poem_obj["lines"].join("<br>")

@@ -1,11 +1,13 @@
 class Batch < ActiveRecord::Base
 
+  has_many :user_batches
+  has_many :users, through: :user_batches
   has_one :quote, dependent: :destroy
   has_one :fact, dependent: :destroy
   has_one :poem, dependent: :destroy
   has_one :news, dependent: :destroy
 
-  before_save :set_batch_data
+  after_create :set_batch_data
 
   def set_batch_data
     self.quote = Quote.create

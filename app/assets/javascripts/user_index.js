@@ -1,12 +1,15 @@
-$(document).on('page:load', function() {
+$(document).ready(ready)
+$(document).on('page:load', ready)
 
-    console.log( "ready! user_show" );
-    setListeners();
-    preventAdminDeletion();
+function ready() {
 
-});
+    console.log( "ready! user_index" );
+    setUserIndexListeners();
+    preventFirstAdminDeletion();
 
-function setListeners(){
+};
+
+function setUserIndexListeners(){
   $(".adminizer").click(function(){
     $.ajax({
       url: $(this).attr("patchPath"),
@@ -22,7 +25,7 @@ function adminize(data){
   $(DOMel).text().trim() === "User" ? $(DOMel).html("Admin") : $(DOMel).html("User");
 };
 
-function preventAdminDeletion(){
+function preventFirstAdminDeletion(){
   $("#user-5-role").parents("tr").find("a[data-method=delete]").hide();
   $("#user-5-role").parents("tr").find("a.adminizer").hide();
 };

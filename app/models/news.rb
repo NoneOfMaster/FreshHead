@@ -3,7 +3,7 @@ require 'open-uri'
 class News < ActiveRecord::Base
   belongs_to :batch
 
-  before_save :set_news_data
+  after_create :set_news_data
 
   def set_news_data
     http = "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=#{Rails.application.secrets.NYT_KEY}"
