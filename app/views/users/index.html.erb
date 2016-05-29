@@ -24,7 +24,7 @@
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td>
-          <%= content_tag "a", class: "adminizer", patchPath: users_path + "/" + user.id.to_s  + "?[user]admin=" + (!user.admin).to_s do %>
+          <%= button_tag class: "adminizer", patchPath: users_path + "/" + user.id.to_s  + "?[user]admin=" + (!user.admin).to_s do %>
             Toggle Admin Privilege
           <% end %>
         </td>

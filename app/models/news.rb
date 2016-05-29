@@ -11,6 +11,7 @@ class News < ActiveRecord::Base
     self.title = news["title"]
     self.abstract = news["abstract"]
     self.url = news["url"]
+    self.save
   end
 
 end

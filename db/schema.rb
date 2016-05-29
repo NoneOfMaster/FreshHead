@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523040921) do
+ActiveRecord::Schema.define(version: 20160524190842) do
 
   create_table "batches", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(version: 20160523040921) do
   create_table "user_batches", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "batch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_progress", default: 0
   end
 
   add_index "user_batches", ["batch_id"], name: "index_user_batches_on_batch_id"

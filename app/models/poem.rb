@@ -7,6 +7,7 @@ class Poem < ActiveRecord::Base
 
   after_create do |p|
     p.get_from_poetry_db
+    p.save
   end
 
   def get_from_poetry_db

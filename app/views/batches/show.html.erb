@@ -1,7 +1,18 @@
 <h1> Today is <%= Date.today.strftime("%b %d, %Y") %>.</h1>
-<h1> You're just <span id="progress-counter">4</span> Clicks Away! </h1>
+<h1><span id="progress-counter"><%= @progress %></span>/4</h1>
 << PROGRESS GRAPHIC CENTERED HERE >>
 
-<div id="content"><div>
 
-<button id="complete_btn"> I read this.</button>
+<%= content_tag "div", id: "content" do %>
+  <div id="content1"><%= @content1 %><br></div>
+  <div id="content2"><%= @content2 %><br></div>
+  <div id="content3"><%= @content3 %></div>
+<% end %>
+
+<% if @current_user %>
+  <%= button_tag id: "complete_btn", patchPath: @path do %>
+    Next
+  <% end %>
+<% else %>
+      <%= link_to 'Please log in to continue.', login_path(user: {return_url: root_path}) %>
+<% end %>

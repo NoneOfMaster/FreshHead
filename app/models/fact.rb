@@ -9,6 +9,7 @@ class Fact < ActiveRecord::Base
     html = open("http://www.fayd.org/api/fact.xml")
     fact_obj = Nokogiri::HTML(html)
     f.text = fact_obj.text
+    f.save
   end
 
 end

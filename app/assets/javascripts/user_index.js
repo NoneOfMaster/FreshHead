@@ -3,7 +3,6 @@ $(document).on('page:load', ready)
 
 function ready() {
 
-    console.log( "ready! user_index" );
     setUserIndexListeners();
     preventFirstAdminDeletion();
 
