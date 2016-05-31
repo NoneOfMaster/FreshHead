@@ -1,2 +1,0 @@
-class PoemsController < ApplicationController
-end

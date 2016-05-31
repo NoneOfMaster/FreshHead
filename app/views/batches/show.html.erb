@@ -1,12 +1,17 @@
 <h1> Today is <%= Date.today.strftime("%b %d, %Y") %>.</h1>
-<h1><span id="progress-counter"><%= @progress %></span>/4</h1>
-<< PROGRESS GRAPHIC CENTERED HERE >>
+<< PROGRESS GRAPHIC HERE >><strong><span id="progress-counter"><%= @progress %></span>/4</strong>
 
 
 <%= content_tag "div", id: "content" do %>
   <div id="content1"><%= @content1 %><br></div>
+  <!-- if this is a poem with breaks, jQuery does it great, browser load will print the <br>s -->
   <div id="content2"><%= @content2 %><br></div>
-  <div id="content3"><%= @content3 %></div>
+  <!-- below conditional only honored at browser load, so doesn't do anything for jQuery dynamism -->
+  <% if @content3 != nil && @content3[0..3] == "http" %>
+    BONUS: <%= link_to "Read the whole story", @content3, :target => "_new" %>.
+  <% else %>
+    <div id="content3"><%= @content3 %></div>
+  <% end %>
 <% end %>
 
 <% if @current_user %>
@@ -14,5 +19,6 @@
     Next
   <% end %>
 <% else %>
+      WELCOME!
       <%= link_to 'Please log in to continue.', login_path(user: {return_url: root_path}) %>
 <% end %>
