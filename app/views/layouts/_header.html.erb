@@ -1,6 +1,9 @@
 <div>
   FreshHeadLogo
   <%= link_to 'Home', root_path %>
+
+  <%= link_to "Visit the Project", "https://github.com/NoneOfMaster/FreshHead", target: "_blank" %>
+
   <% if !!session["user_id"] %>
     <%= link_to current_user.user_name + "'s Profile", current_user %>
 
@@ -14,7 +17,6 @@
     <%= link_to 'Log In', login_path(user: {return_url: request.env['PATH_INFO']}) %>
     <%= link_to 'Sign Up', signup_path %>
   <% end %>
-
 
   <p id="notice"><%= notice %></p>
 </div> 

@@ -5,7 +5,7 @@
 <%= content_tag "div", id: "content" do %>
   <div id="content1"><%= @content1 %><br></div>
   <!-- if this is a poem with breaks, jQuery does it great, browser load will print the <br>s -->
-  <div id="content2"><%= @content2 %><br></div>
+  <div id="content2"><%= sanitize @content2, tags: %w(br) %><br></div>
   <!-- below conditional only honored at browser load, so doesn't do anything for jQuery dynamism -->
   <% if @content3 != nil && @content3[0..3] == "http" %>
     BONUS: <%= link_to "Read the whole story", @content3, :target => "_new" %>.
