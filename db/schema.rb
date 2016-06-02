@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160524190842) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "batches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.integer  "batch_id"
   end
 
-  add_index "facts", ["batch_id"], name: "index_facts_on_batch_id"
+  add_index "facts", ["batch_id"], name: "index_facts_on_batch_id", using: :btree
 
   create_table "news", force: :cascade do |t|
     t.text     "title"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "news", ["batch_id"], name: "index_news_on_batch_id"
+  add_index "news", ["batch_id"], name: "index_news_on_batch_id", using: :btree
 
   create_table "poems", force: :cascade do |t|
     t.text    "title"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.integer "batch_id"
   end
 
-  add_index "poems", ["batch_id"], name: "index_poems_on_batch_id"
+  add_index "poems", ["batch_id"], name: "index_poems_on_batch_id", using: :btree
 
   create_table "quotes", force: :cascade do |t|
     t.text     "author"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.integer  "batch_id"
   end
 
-  add_index "quotes", ["batch_id"], name: "index_quotes_on_batch_id"
+  add_index "quotes", ["batch_id"], name: "index_quotes_on_batch_id", using: :btree
 
   create_table "user_batches", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.integer  "user_progress", default: 0
   end
 
-  add_index "user_batches", ["batch_id"], name: "index_user_batches_on_batch_id"
-  add_index "user_batches", ["user_id"], name: "index_user_batches_on_user_id"
+  add_index "user_batches", ["batch_id"], name: "index_user_batches_on_batch_id", using: :btree
+  add_index "user_batches", ["user_id"], name: "index_user_batches_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "user_name"
@@ -77,4 +80,10 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.boolean  "admin",           default: false
   end
 
+  add_foreign_key "facts", "batches"
+  add_foreign_key "news", "batches"
+  add_foreign_key "poems", "batches"
+  add_foreign_key "quotes", "batches"
+  add_foreign_key "user_batches", "batches"
+  add_foreign_key "user_batches", "users"
 end

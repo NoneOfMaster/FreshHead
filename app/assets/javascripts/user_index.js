@@ -25,6 +25,6 @@ function adminize(data){
 };
 
 function preventFirstAdminDeletion(){
-  $("#user-5-role").parents("tr").find("a[data-method=delete]").hide();
-  $("#user-5-role").parents("tr").find("a.adminizer").hide();
+  $("#user-1-role").parents("tr").find("a[data-method=delete]").hide();
+  $("#user-1-role").parents("tr").find("button.adminizer").hide();
 };
