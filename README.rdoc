@@ -1,28 +1,24 @@
 == FreshHead
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to my project app, FreshHead! With it, a joyful user is served one fact, one poem, one quote, and one news abstract per day. Each day that a user absorbs this full compliment of mentally freshening data, that user will get a positive affirmation, and the day will count toward that users freshness streak… Very satisfying and very rewarding!
 
-Coming Soon:
+- Ruby Version 2.2.2p95 (2015-04-13 revision 50295) [x86_64-darwin14]
+- 'rspec' to run the test suite
 
-* Ruby version
+APIs:
 
-* System dependencies
+News:
+New York Times API
 
-* Configuration
+Facts:
+http://www.fayd.org/
 
-* Database creation
+Quotes:
+http://forismatic.com/
 
-* Database initialization
+Poetry Courtesy of:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+PoemsDB.org - http://poetrydb.org
+Poems.com - http://poems.com/today.php
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
