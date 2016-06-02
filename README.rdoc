@@ -1,6 +1,6 @@
 == FreshHead
 
-Welcome to my project app, FreshHead! With it, a joyful user is served one fact, one poem, one quote, and one news abstract per day. Each day that a user absorbs this full compliment of mentally freshening data, that user will get a positive affirmation, and the day will count toward that users freshness streak… Very satisfying and very rewarding!
+Welcome to my project app, FreshHead! With it, a joyful user is served one fact, one poem, one quote, and one news abstract per day (UTC). Each day that a user absorbs this full compliment of mentally freshening data, that user will get a positive affirmation, and the day will count toward that users freshness streak… Very satisfying and very rewarding!
 
 - Ruby Version 2.2.2p95 (2015-04-13 revision 50295) [x86_64-darwin14]
 - 'rspec' to run the test suite

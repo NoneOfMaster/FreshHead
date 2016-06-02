@@ -20,5 +20,5 @@
   <% end %>
 <% else %>
       WELCOME!
-      <%= link_to 'Please log in to continue.', login_path(user: {return_url: root_path}) %>
+      <%= link_to 'Please log in to get started', login_path(user: {return_url: root_path}) %>
 <% end %>

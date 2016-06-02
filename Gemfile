@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'simplecov', :require => false, :group => :test
 
+gem "figaro"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
