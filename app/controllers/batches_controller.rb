@@ -1,7 +1,7 @@
 class BatchesController < ApplicationController
 
   def show
-    if Batch.last.created_at.to_date != Date.today
+    if Batch.last.created_at.to_date != Time.now.getutc.to_date
       ### this is better off ensured by a cron job for new batches
       ### but that cost money on Heroku, so this way for now
       Batch.create
