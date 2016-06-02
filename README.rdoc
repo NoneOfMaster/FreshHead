@@ -11,10 +11,10 @@ News:
 New York Times API
 
 Facts:
-http://www.fayd.org/
+http://www.fayd.org
 
 Quotes:
-http://forismatic.com/
+http://forismatic.com
 
 Poetry Courtesy of:
 
