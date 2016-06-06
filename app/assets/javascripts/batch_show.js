@@ -1,7 +1,7 @@
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).ready(batchShowReady)
+$(document).on('page:load', batchShowReady)
 
-function ready() {
+function batchShowReady() {
 
     onBatchShowLoadReady();
 

@@ -1,7 +1,7 @@
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).ready(userIndexReady)
+$(document).on('page:load', userIndexReady)
 
-function ready() {
+function userIndexReady() {
 
     setUserIndexListeners();
     preventFirstAdminDeletion();
@@ -19,6 +19,8 @@ function setUserIndexListeners(){
   });
 };
 
+// look into why you can toggle these buttons faster than the server can process
+// and how to work with this
 function adminize(data){
   var DOMel = "#user-" + data["id"] + "-role";
   $(DOMel).text().trim() === "User" ? $(DOMel).html("Admin") : $(DOMel).html("User");

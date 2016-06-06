@@ -12360,23 +12360,77 @@ return jQuery;
   };
 
 }).call(this);
-(function() {
+$(document).ready(batchShowReady)
+$(document).on('page:load', batchShowReady)
 
+function batchShowReady() {
 
-}).call(this);
-(function() {
+    onBatchShowLoadReady();
 
+};
 
-}).call(this);
-$(function() {
+function onBatchShowLoadReady(){
+  $("#complete_btn").click(function(){
+    $.ajax({
+      url: $(this).attr("patchPath"),
+      method: "PATCH",
+      dataType: "json",
+      success: doSuccess
+    });
+  });
 
-    console.log( "ready!" );
-    
-});
-(function() {
+  nextButtonVisability()
+};
 
+function doSuccess(data){
+  $("#progress-counter").html(data["progress"]);
+  $("#content1").html(data["content"]["content1"]);
+  $("#content2").html(data["content"]["content2"]);
+  if ( data["content"]["content3"].slice(0,4) === "http" ) {
+    $("#content3").html("BONUS: <a href=" + data["content"]["content3"] + " target='_blank'>Read the whole story</a>.")
+  } else {
+    $("#content3").html(data["content"]["content3"]);
+  }
+  nextButtonVisability()
+};
 
-}).call(this);
+function nextButtonVisability() {
+  if ( $("#progress-counter").text() === "4" ) {
+    $("#complete_btn").hide();
+  }
+};
+$(document).ready(userIndexReady)
+$(document).on('page:load', userIndexReady)
+
+function userIndexReady() {
+
+    setUserIndexListeners();
+    preventFirstAdminDeletion();
+
+};
+
+function setUserIndexListeners(){
+  $(".adminizer").click(function(){
+    $.ajax({
+      url: $(this).attr("patchPath"),
+      method: "PATCH",
+      dataType: "json",
+      success: adminize
+    });
+  });
+};
+
+// look into why you can toggle these buttons faster than the server can process
+// and how to work with this
+function adminize(data){
+  var DOMel = "#user-" + data["id"] + "-role";
+  $(DOMel).text().trim() === "User" ? $(DOMel).html("Admin") : $(DOMel).html("User");
+};
+
+function preventFirstAdminDeletion(){
+  $("#user-1-role").parents("tr").find("a[data-method=delete]").hide();
+  $("#user-1-role").parents("tr").find("button.adminizer").hide();
+};
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //

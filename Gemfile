@@ -32,6 +32,8 @@ gem 'simplecov', :require => false, :group => :test
 
 gem "figaro"
 
+gem 'sprockets_better_errors'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
