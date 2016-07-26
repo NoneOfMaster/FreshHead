@@ -1,22 +1,33 @@
-<div>
-  FreshHeadLogo
-  <%= link_to 'Home', root_path %>
+<div class="custom-menu-wrapper">
 
-  <%= link_to "Visit the Project", "https://github.com/NoneOfMaster/FreshHead", target: "_blank" %>
+  <div class="pure-menu custom-menu custom-menu-top">
+    <a class="pure-menu-heading custom-menu-brand"><span class="freshhead">FreshHead</span></a>
+    <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+  </div>
 
-  <% if !!session["user_id"] %>
-    <%= link_to current_user.user_name + "'s Profile", current_user %>
+  <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
+        <div class="custom-menu-screen"></div>
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item"><%= link_to 'Home', root_path, :class => "pure-menu-heading pure-menu-link" %></li>
+            <li class="pure-menu-item"><%= link_to "Visit the Project", "https://github.com/NoneOfMaster/FreshHead", target: "_blank", :class => "pure-menu-heading pure-menu-link"  %></li>
 
-    <!-- admin options -->
-    <% if current_user.admin %>
-      <%= link_to 'Manage Users', users_path %>
-    <% end %>
+            <% if !!session["user_id"] %>
+              <li class="pure-menu-item"><%= link_to current_user.user_name + "'s Profile", current_user, :class => "pure-menu-heading pure-menu-link"  %></li>
 
-    <%= link_to 'Log Out', signout_path %>
-  <% else %>
-    <%= link_to 'Log In', login_path(user: {return_url: request.env['PATH_INFO']}) %>
-    <%= link_to 'Sign Up', signup_path %>
-  <% end %>
+              <!-- admin options -->
+              <% if current_user.admin %>
+                <li class="pure-menu-item"><%= link_to 'Manage Users', users_path, :class => "pure-menu-heading pure-menu-link"  %></li>
+              <% end %>
 
+              <li class="pure-menu-item"><%= link_to 'Log Out', signout_path, :class => "pure-menu-heading pure-menu-link"  %></li>
+            <% else %>
+              <li class="pure-menu-item"><%= link_to 'Log In', login_path(user: {return_url: request.env['PATH_INFO']}), :class => "pure-menu-heading pure-menu-link" %></li>
+              <li class="pure-menu-item"><%= link_to 'Sign Up', signup_path, :class => "pure-menu-heading pure-menu-link"  %></li>
+            <% end %>
+          </ul>
+  </div>
+</div>
+
+<div class="notice">
   <p id="notice"><%= notice %></p>
-</div> 
+</div> <!-- notice -->

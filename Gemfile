@@ -32,7 +32,7 @@ gem 'simplecov', :require => false, :group => :test
 
 gem "figaro"
 
-gem 'sprockets_better_errors'
+gem 'purecss-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -56,4 +56,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  gem 'sprockets_better_errors'
+end
