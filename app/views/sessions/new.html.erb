@@ -1,9 +1,14 @@
 <% if !!session["user_id"] %>
   <h1>You are already signed in, <%= current_user.user_name %>.</h1>
 <% else %>
-<h1>Sign In</h1>
-  <%= render 'form' %>
+
+<h1 class="white-center">Sign In</h1>
+  <div class="pure-g">
+    <div class="pure-u center">
+      <%= render 'form' %>
+      <!-- this whole thing would be better if never actually nav'd to but
+      rendered a la the authorize method -->
+      <%= link_to 'Back', root_path %>
+    </div>  
+  </div>
 <% end %>
-<!-- this whole thing would be better if never actually nav'd to but
-rendered a la the authorize method -->
-<%= link_to 'Back', root_path %>

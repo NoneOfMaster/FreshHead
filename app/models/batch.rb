@@ -16,10 +16,6 @@ class Batch < ActiveRecord::Base
     self.news = News.create # 100 request/day quota
   end
 
-  def make_sure_current
-
-  end
-
   def cli_details
     puts "TODAY'S BATCH SUCCESSFULLY CREATED"
     puts "Date: #{self.created_at.strftime("%B, %d, %Y")}"

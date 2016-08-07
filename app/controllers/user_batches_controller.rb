@@ -1,15 +1,28 @@
 class UserBatchesController < ApplicationController
 
+  def show
+    set_user_batch
+    render :json => {"progress" => @user_batch.user_progress, "content" => next_content}
+  end
+
   def update
     ### the below three lines can be broken out into private methods
-    @user_batch = UserBatch.find(params[:id])
+    set_user_batch
     @user_batch.increment(:user_progress, by = 1)
     @user_batch.save
     render :json => {"progress" => @user_batch.user_progress, "content" => next_content}
   end
 
+  def progress
+    set_user_batch
+    render :json => {"progress" => @user_batch.user_progress}
+  end
+
   private
 
+  def set_user_batch
+    @user_batch = UserBatch.find(params[:id])
+  end
 
   def next_content
     batch = Batch.find(@user_batch.batch_id)

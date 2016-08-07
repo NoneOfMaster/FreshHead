@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy, :new]
   resources :batches, :quotes, :facts, :poems, only: [:index, :show]
-  resources :user_batches, only: [:update]
+  resources :user_batches, only: [:update, :show] do
+    member do # member v. collection - cool
+      get 'progress'
+    end 
+  end
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

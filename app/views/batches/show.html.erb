@@ -1,23 +1,55 @@
-<h1> Welcome to FreshHead. Today is <%= Date.today.strftime("%b %d, %Y") %>.</h1>
-<< PROGRESS GRAPHIC HERE >><strong><span id="progress-counter"><%= @progress %></span>/4</strong>
-
-<%= content_tag "div", id: "content" do %>
-  <div id="content1"><%= @content1 %><br></div>
-  <!-- if this is a poem with breaks, jQuery does it great, browser load will print the <br>s -->
-  <div id="content2"><%= sanitize @content2, tags: %w(br) %><br></div>
-  <!-- below conditional only honored at browser load, so doesn't do anything for jQuery dynamism -->
-  <% if @content3 != nil && @content3[0..3] == "http" %>
-    BONUS: <%= link_to "Read the whole story", @content3, :target => "_new" %>.
-  <% else %>
-    <div id="content3"><%= @content3 %></div>
-  <% end %>
-<% end %>
-
+<h1 class="white-center"> Welcome! Let's freshen up. It only takes a minute.</h1> 
 <% if @current_user %>
-  <%= button_tag id: "complete_btn", patchPath: @path do %>
-    I've got it. Let's move on!
-  <% end %>
+
+  <div class="pure-g">
+    <div class="pure-u center">
+      <%= image_tag ("red-light.png"), id: "light-1" %>
+      <%= image_tag ("red-light.png"), id: "light-2" %>
+      <%= image_tag ("red-light.png"), id: "light-3" %>
+      <%= image_tag ("red-light.png"), id: "light-4" %>
+    </div> 
+  </div>
+  
+  <!-- <strong><span id="progress-counter"></span></strong> -->
+
 <% else %>
-      WELCOME!
-      <%= link_to 'Please log in to get started', login_path(user: {return_url: root_path}) %>
+
+<p class="white-center">Today is <%= Date.today.strftime("%b %d, %Y") %>.</p>
+
 <% end %>
+
+<div class="pure-g">
+  <div class="pure-u center">
+
+    <%= content_tag "div", id: "content" do %>
+      <div id="content1"><%= @content1 %><br></div>
+      <!-- if this is a poem with breaks, jQuery does it great, browser load will print the <br>s -->
+      <div id="content2"><%= sanitize @content2, tags: %w(br) %><br></div>
+      <!-- below conditional only honored at browser load, so doesn't do anything for jQuery dynamism -->
+      <div id="content3">
+        <% if @content3 != nil && @content3[0..3] == "http" %>
+          BONUS: <%= link_to "Read the whole story", @content3, :target => "_new" %>.
+        <% else %>
+          <%= @content3 %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="pure-g">
+  <% if @current_user %>
+    <div class="pure-u center">
+      <%= button_tag id: "complete_btn", :class => "pure-button", patchPath: @path do %>
+      I've got it. Let's move on!
+      <% end %>
+    </div>  
+  <% else %>
+    <div class="pure-u center">
+      <!-- make this a button -->
+      <%= link_to 'PLEASE LOG IN TO GET STARTED', login_path(user: {return_url: root_path}), :class => "pure-button" %>
+    </div>
+  <% end %>
+</div>
+<p style="color:white;">Thank you for bearing with the growing pains... this app is in progress.</p>

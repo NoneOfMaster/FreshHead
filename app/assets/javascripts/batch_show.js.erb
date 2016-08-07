@@ -1,0 +1,82 @@
+$(document).ready(batchShowReady)
+$(document).on('page:load', batchShowReady)
+
+function batchShowReady() {
+
+    onBatchShowLoadReady();
+
+};
+
+function onBatchShowLoadReady(){
+
+  var basePath = $("#complete_btn").attr("patchPath");
+  setProgress(basePath); //for progin case of browser refresh 
+
+  $.get( basePath, function( data ) {
+
+    redGreenLight(data["progress"]);
+
+    if ( data["progress"] === 4 ) {
+      $("#complete_btn").hide();
+    } else {
+      setCompleteButton(basePath);
+    }
+
+  });
+
+};
+
+function redGreenLight(progress) {
+  if ( progress > 0 ) {
+      $("#light-1").attr({src: " <%= asset_path('green-light.png') %>" });
+  }
+  if ( progress > 1 ) {
+    $("#light-2").attr({src: " <%= asset_path('green-light.png') %>" });
+  }
+  if ( progress > 2 ) {
+    $("#light-3").attr({src: " <%= asset_path('green-light.png') %>" });
+  }
+  if ( progress > 3 ) {
+    $("#light-4").attr({src: " <%= asset_path('green-light.png') %>" });
+  }
+
+};
+
+function setCompleteButton(path) {
+  $("#complete_btn").click(function(){
+    $.ajax({
+      url: path,
+      method: "PATCH",
+      dataType: "json",
+      success: completeButtonSuccess
+    });
+  });
+};
+
+function completeButtonSuccess(data){
+  redGreenLight(data["progress"]);
+  $("#progress-counter").html(data["progress"] + "/4");
+  $("#content1").html(data["content"]["content1"]);
+  $("#content2").html(data["content"]["content2"]);
+  if ( data["content"]["content3"].slice(0,4) === "http" ) {
+    $("#content3").html("BONUS: <a href=" + data["content"]["content3"] + " target='_blank'>Read the whole story</a>.")
+  } else {
+    $("#content3").html(data["content"]["content3"]);
+  }
+  if ( data["progress"] === 4 ) {
+      $("#complete_btn").hide();
+  }
+};
+
+function setProgress(path) {
+  $.ajax({
+      url: path + "/progress",
+      method: "GET",
+      dataType: "json",
+      success: setProgressSuccess
+  });
+}
+
+function setProgressSuccess(data) {
+  $("#progress-counter").html(data["progress"] + "/4");
+}

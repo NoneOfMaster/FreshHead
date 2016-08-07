@@ -1,0 +1,28 @@
+// Place all the styles related to the Batches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.white-center {
+  color: #fff;
+  text-align: center;
+}
+
+.please-log-in {
+  text-align: center;
+}
+
+.center {
+  margin: auto;
+}
+
+#content, #content a {
+  color: #fff;
+  margin: 1em 0;
+}
+
+.content-box {
+  margin: 3em auto 1em;
+  background-color: #fff;
+  display: block;
+  padding: 1em;
+}

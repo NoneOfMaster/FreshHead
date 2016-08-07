@@ -1,9 +1,10 @@
 <h1>Listing Users</h1>
 
-<table>
+<table id="user-index">
   <thead>
     <tr>
       <th>User name</th>
+      <th>Email</th>
       <th>Role</th>
       <th></th>
     </tr>
@@ -13,6 +14,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.user_name %></td>
+        <td><%= user.email %></td>
         <td id="user-<%= user.id %>-role">
           <% if user.admin %>
             Admin
