@@ -18,6 +18,11 @@ class UserBatchesController < ApplicationController
     render :json => {"progress" => @user_batch.user_progress}
   end
 
+  def complete
+    set_user_batch
+    @user_batch.update(complete: 1)
+  end
+
   private
 
   def set_user_batch

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :user_batches, only: [:update, :show] do
     member do # member v. collection - cool
       get 'progress'
+      patch 'complete'
     end 
   end
   resources :users

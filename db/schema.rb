@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524190842) do
+ActiveRecord::Schema.define(version: 20160818231532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160524190842) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_progress", default: 0
+    t.boolean  "complete"
   end
 
   add_index "user_batches", ["batch_id"], name: "index_user_batches_on_batch_id", using: :btree
