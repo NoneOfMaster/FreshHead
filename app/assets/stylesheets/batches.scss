@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#content1 {
+  font-weight: 700;
+}
+
+#content2 {
+  font-weight: 300;
+}
+
 .white-center {
   color: #fff;
   text-align: center;
@@ -12,17 +20,16 @@
 }
 
 .center {
-  margin: auto;
+  margin: 0px auto;
 }
 
-#content, #content a {
-  color: #fff;
-  margin: 1em 0;
+#content, #content {
+  margin: 1em;
 }
 
 .content-box {
-  margin: 3em auto 1em;
-  background-color: #fff;
-  display: block;
-  padding: 1em;
+  margin: 2em auto;
+  background-color: rgba(255,255,255,0.8);
+  display: inline-block;
+  border-radius: 5px;
 }

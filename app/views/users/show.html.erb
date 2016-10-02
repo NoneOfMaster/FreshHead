@@ -1,26 +1,30 @@
 
 <div class="pure-g">
   <div class="pure-u center">
-    <table style="color:white;">
+    <table class="stats-table">
       <tr>
-        <td><strong>User name:</strong></td>
+        <td>User name:</td>
         <td><%= @user.user_name %></td> 
       </tr>
       <tr>
-        <td><strong>Email Address:</strong></td>
+        <td>Email Address:</td>
         <td><%= @user.email %></td> 
       </tr>
       <tr>
         <td>Fresh Days Completed:</td>
-        <td><%= @user.user_batches.where(complete: true).count %></td> 
+        <td><%= @total_complete %></td> 
       </tr>
       <tr>
         <td>Current Streak:</td>
-        <td> coming soon </td> 
+        <td><%= @current_streak %></td> 
       </tr>
       <tr>
         <td>Longest Streak:</td>
-        <td> coming soon </td> 
+        <td><%= @longest_streak %></td> 
+      </tr>
+      <tr>
+        <td>Awards Earned:</td>
+      <td>coming soon!</td> 
       </tr>
     </table>
   </div>

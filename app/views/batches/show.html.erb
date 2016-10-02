@@ -7,6 +7,7 @@
       <%= image_tag ("red-light.png"), id: "light-2" %>
       <%= image_tag ("red-light.png"), id: "light-3" %>
       <%= image_tag ("red-light.png"), id: "light-4" %>
+      </div>
     </div> 
   </div>
   
@@ -19,22 +20,22 @@
 <% end %>
 
 <div class="pure-g">
-  <div class="pure-u center">
-
-    <%= content_tag "div", id: "content" do %>
-      <div id="content1"><%= @content1 %><br></div>
-      <!-- if this is a poem with breaks, jQuery does it great, browser load will print the <br>s -->
-      <div id="content2"><%= sanitize @content2, tags: %w(br) %><br></div>
-      <!-- below conditional only honored at browser load, so doesn't do anything for jQuery dynamism -->
-      <div id="content3">
-        <% if @content3 != nil && @content3[0..3] == "http" %>
-          BONUS: <%= link_to "Read the whole story", @content3, :target => "_new" %>.
-        <% else %>
-          <%= @content3 %>
-        <% end %>
-      </div>
+  <div class="pure-u center content-box">
+    <% if !!@content1 || !!@content2 || !!@content3 %>
+      <%= content_tag "div", id: "content" do %>
+        <div id="content1"><%= @content1 %></div>
+        <!-- if this is a poem with breaks, jQuery does it great, browser load will print the <br>s -->
+        <div id="content2"><%= sanitize @content2, tags: %w(br) %></div>
+        <!-- below conditional only honored at browser load, so doesn't do anything for jQuery dynamism -->
+        <div id="content3">
+          <% if @content3 != nil && @content3[0..3] == "http" %>
+            BONUS: <%= link_to "Read the whole story", @content3, :target => "_new" %>.
+          <% else %>
+            <%= @content3 %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-
   </div>
 </div>
 
@@ -52,4 +53,3 @@
     </div>
   <% end %>
 </div>
-<p style="color:white;">Thank you for bearing with the growing pains... this app is in progress.</p>

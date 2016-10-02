@@ -1,10 +1,8 @@
 class BatchesController < ApplicationController
 
   def show
-    # because of the below a batch must be created along with deployment
     if Batch.last.created_at.to_date != Time.now.getutc.to_date
-      ### this is better off ensured by a cron job for new batches
-      ### but that cost money on Heroku, so this way for now
+      ### a cron job would be best but in free Heroku : the above.
       Batch.create
     end
 
@@ -24,7 +22,6 @@ class BatchesController < ApplicationController
 private
 
   def set_user_batch
-    ## the user_batch, not the user's batch
     if !current_user.batches.include?(@batch)
       current_user.batches << @batch
     end

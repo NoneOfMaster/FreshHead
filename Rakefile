@@ -5,7 +5,7 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-desc "setting data for cron daily job"
+desc "setting new batch"
 task :set_batch_data => [:environment] do
   batch = Batch.create
   batch.cli_details
