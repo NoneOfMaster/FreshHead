@@ -20,7 +20,7 @@ class UserBatchesController < ApplicationController
 
   def complete
     set_user_batch
-    @user_batch.update(complete: 1)
+    render :json => @user_batch.update(complete: 1)
   end
 
   private
