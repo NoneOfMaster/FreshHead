@@ -1,10 +1,10 @@
 class BatchesController < ApplicationController
 
   def show
-    if Batch.last.created_at.to_date != Time.now.getutc.to_date
-      ### a cron job would be best but in free Heroku : the above.
-      Batch.create
-    end
+    # scheduling for midnight to troubleshoot heroku memory usage
+    # if Batch.last.created_at.to_date != Time.now.getutc.to_date
+    #   Batch.create
+    # end
 
     @batch = Batch.last
     if current_user

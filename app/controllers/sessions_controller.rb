@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.where(email: session_params[:email]).first
+    @user = User.where(email: session_params[:email]).first ## use find_by here instead
     if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
       notice = "Welcome back, #{@user.user_name}."

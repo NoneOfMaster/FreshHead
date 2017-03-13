@@ -17,18 +17,19 @@ class Batch < ActiveRecord::Base
   end
 
   def cli_details
-    puts "TODAY'S BATCH SUCCESSFULLY CREATED"
-    puts "Date: #{self.created_at.strftime("%B, %d, %Y")}"
-    puts "Quote: #{self.quote.text}"
-    puts "Quote Author: #{self.quote.author}"
-    puts "Fact: #{self.fact.text}"
-    puts "Poem: #{self.poem.title}"
-    puts "by #{self.poem.poet}"
-    puts "#{self.poem.poem}"
-    puts "News: #{self.news.title}"
-    puts "Abstract: #{self.news.abstract}"
-    puts "URL: #{self.news.url}"
-    true
+    # removing to troubleshoot heroku memory usage
+    # puts "TODAY'S BATCH SUCCESSFULLY CREATED"
+    # puts "Date: #{self.created_at.strftime("%B, %d, %Y")}"
+    # puts "Quote: #{self.quote.text}"
+    # puts "Quote Author: #{self.quote.author}"
+    # puts "Fact: #{self.fact.text}"
+    # puts "Poem: #{self.poem.title}"
+    # puts "by #{self.poem.poet}"
+    # puts "#{self.poem.poem}"
+    # puts "News: #{self.news.title}"
+    # puts "Abstract: #{self.news.abstract}"
+    # puts "URL: #{self.news.url}"
+    # true
   end  
 
 end
