@@ -1,10 +1,9 @@
 class BatchesController < ApplicationController
 
   def show
-    # scheduling for midnight to troubleshoot heroku memory usage
-    # if Batch.last.created_at.to_date != Time.now.getutc.to_date
-    #   Batch.create
-    # end
+    if !Batch.last || Batch.last.created_at.to_date != Time.now.getutc.to_date
+      Batch.create
+    end
 
     @batch = Batch.last
     if current_user
@@ -16,7 +15,7 @@ class BatchesController < ApplicationController
     else
       @progress = 0
       @path = login_path
-    end 
+    end
   end
 
 private
